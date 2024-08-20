@@ -31,10 +31,10 @@ function Login() {
             {error && <p>Invalid username or password</p>}
            {success? (<><p>Welcome, user</p></>):( <>
             <div>
-            <span>Username:</span><input type="text" onChange={handleUsername} required/>
+            <span>Username:</span><input type="text" value={username} onChange={handleUsername} required/>
             </div>
             <div>
-            <span>Password:</span><input type="text" onChange={handlePassword} required/>
+            <span>Password:</span><input type="text" value={password} onChange={handlePassword} required/>
             </div>
             <button>Submit</button>
            
