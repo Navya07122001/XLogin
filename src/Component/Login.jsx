@@ -3,16 +3,22 @@ import {useState} from "react"
 function Login() {
     const [username,setUsername]=useState("");
     const [password,setPassword]=useState("");
-    const [text,setText]=useState("");
-    const [error,setError]=useState("")
+    const [success,setSuccess]=useState(false);
+    const [error,setError]=useState(false);
+    const handleUsername=(e)=>{
+            setUsername(e.target.value)
+    }
+    const handlePassword=(e)=>{
+        setPassword(e.target.value);
+}
     const handleSubmit=(e)=>{
         e.preventDefault();
-        if(username=="username" && password=="password")
+        if(username==="user" && password==="password")
         {
-             setText("Welcome, user!")
+             setSuccess(true);
         }
         else{
-            setError("Invalid username or password")
+            setError(true);
         }
         
         console.log(username);
@@ -22,13 +28,13 @@ function Login() {
         <div>
             <form onSubmit={handleSubmit}>
             <h1>Login Page</h1>
-            {error && <p>{error}</p>}
-           {text.length? (<><p>{text}</p></>):( <>
+            {error && <p>Invalid username or password</p>}
+           {success? (<><p>Welcome, user</p></>):( <>
             <div>
-            <span>Username:</span><input type="text" onChange={(e)=>setUsername(e.target.value)} required/>
+            <span>Username:</span><input type="text" onChange={handleUsername} required/>
             </div>
             <div>
-            <span>Password:</span><input type="text" onChange={(e)=>setPassword(e.target.value)} required/>
+            <span>Password:</span><input type="text" onChange={handlePassword} required/>
             </div>
             <button>Submit</button>
            
